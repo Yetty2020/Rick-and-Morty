@@ -1,10 +1,12 @@
-import Practice from "./components/practice"
+
+import Gallery from "./components/Gallery"
+
 
 
 function App() {
   return (
     <div className="text-5xl">
-     <Practice />
+    <Gallery/>
       
     </div>
   )
