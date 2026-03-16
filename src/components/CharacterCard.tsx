@@ -10,6 +10,9 @@ function CharacterCard({character}: Props) {
     const { name, image, status, species } = character
   return (
     <div>
+        <h2>{name}</h2>
+        <img src={image} alt={name} />
+        <p>{status} - {species}</p>
       
     </div>
   )

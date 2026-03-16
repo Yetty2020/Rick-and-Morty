@@ -1,11 +1,13 @@
 
 import Gallery from "./components/Gallery"
+import Search from "./components/Search"
 
 
 
 function App() {
   return (
-    <div className="text-5xl">
+    <div className="">
+      <Search/>
     <Gallery/>
       
     </div>
