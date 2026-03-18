@@ -1,14 +1,16 @@
 
+import { useState } from "react"
 import Gallery from "./components/Gallery"
 import Search from "./components/Search"
 
 
 
 function App() {
+  const [searchItem, setSearchItem] = useState("")
   return (
     <div className="">
-      <Search/>
-    <Gallery/>
+      <Search onSearchChange={setSearchItem}/>
+    <Gallery searchTerm={searchItem}/>
       
     </div>
   )

@@ -1,6 +1,6 @@
 import { useEffect, useState} from "react"
 
-function Search() {
+function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
 
     const [searchItem, setSearchItem ] = useState("")
     //debounce value to trigger API fetch
@@ -10,6 +10,7 @@ function Search() {
     useEffect(() =>{
         const handler = setTimeout(() =>{
             setDebouncedSearchItem(searchItem)
+                onSearchChange(searchItem)
         }, 1000) // delay of 500ms
 
         //to handle the cleanup
@@ -18,7 +19,7 @@ function Search() {
             clearTimeout(handler)
 
         }
-    }, [searchItem])// this effect runs every time the searchItem changes
+    }, [searchItem, onSearchChange])// this effect runs every time the searchItem changes
 
   return (
     <div>

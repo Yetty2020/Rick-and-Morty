@@ -6,7 +6,6 @@ import CharacterCard from "./CharacterCard";
 const Gallery = () => {
   const { loading, error, data } = useQuery<CharactersResponse, CharactersVars>(GET_CHARACTERS, {
     variables: { page: 1,
-        filter: {name: searchTerm}
      },
   });
 
