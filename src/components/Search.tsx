@@ -4,12 +4,12 @@ function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
 
     const [searchItem, setSearchItem ] = useState("")
     //debounce value to trigger API fetch
-    const [debouncedSearchItem, setDebouncedSearchItem] = useState("")
+   
 
     // the timer
     useEffect(() =>{
         const handler = setTimeout(() =>{
-            setDebouncedSearchItem(searchItem)
+           
                 onSearchChange(searchItem)
         }, 1000) // delay of 500ms
 
@@ -32,8 +32,8 @@ function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
         </div>
         
             <button>Search</button>
-            <p>{searchItem}</p>
-            <p>{debouncedSearchItem}</p>
+            
+            <p>Searchng for:{searchItem}</p>
       
     </div>
   )
