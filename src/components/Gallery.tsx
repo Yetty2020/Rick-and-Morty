@@ -53,7 +53,15 @@ const Gallery = ({
   //to check if data exists but results are empty
   const characters = data?.characters.results;
   if (!characters || characters?.length === 0) {
-    return <div>No characters found in this timeline</div>;
+    return (
+        <div>
+            <p>Try searching for one of these instead:</p>
+            <div>{SUGGESTIONS.map((name) =>(
+                <button key={name}  onClick={() =>onSearchUpdate(name)}>{name}</button>
+            ))}</div>
+            <button onClick={() =>onSearchUpdate("")}>Show All Characters</button>
+        </div>
+    );
   }
   console.log(data);
   console.log(error);

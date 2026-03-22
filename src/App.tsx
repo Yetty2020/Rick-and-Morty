@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="">
       <Search onSearchChange={setSearchItem}/>
-    <Gallery searchTerm={searchItem} key={searchItem}/>
+    <Gallery searchTerm={searchItem} key={searchItem} onSearchUpdate={setSearchItem}/>
       
     </div>
   )
