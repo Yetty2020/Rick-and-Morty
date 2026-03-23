@@ -23,17 +23,25 @@ function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
 
   return (
     <div>
-        <div>
-            <input type="text" placeholder="Search for a character..." value={searchItem} onChange={(event) =>{setSearchItem(event.target.value)
+        <div className=" text-white flex items-center justify-center w-full">
+            <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl">
+                <input type="text" placeholder="Find a character..." value={searchItem} onChange={(event) =>{setSearchItem(event.target.value) 
             
 
-        }}/>
-        {searchItem && <button onClick={() =>{setSearchItem("")}}>Clear</button>}
+        }} className="outline-none border-none text-white focus-none w-full flex-1 bg-transparent " />
+        
+
+        
+        {searchItem ? <button onClick={() =>{setSearchItem("")}}>Clear</button> : <button className="opacity-70">Search</button>}
+
+            </div>
+            
+        
         </div>
         
-            <button>Search</button>
             
-            <p>Searchng for:{searchItem}</p>
+            
+            
       
     </div>
   )

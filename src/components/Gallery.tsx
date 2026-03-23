@@ -68,6 +68,7 @@ const Gallery = ({
 
   return (
     <div>
+      
       <div>
         <button onClick={handlePrevButton} disabled={currentPage === 1}>
           Previous
