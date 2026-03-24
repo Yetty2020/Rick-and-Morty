@@ -67,9 +67,19 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <div>
+    <section>
       
-      <div>
+     
+      <div className="grid lg:grid-cols-4 w-full gap-6 p-6">
+        {data?.characters.results.map((character) => {
+          return (
+            <section >
+              <CharacterCard key={character.id} character={character} />
+            </section>
+          );
+        })}
+      </div>
+       <div>
         <button onClick={handlePrevButton} disabled={currentPage === 1}>
           Previous
         </button>
@@ -83,16 +93,7 @@ const Gallery = ({
           Next
         </button>
       </div>
-      <div>
-        {data?.characters.results.map((character) => {
-          return (
-            <section>
-              <CharacterCard key={character.id} character={character} />
-            </section>
-          );
-        })}
-      </div>
-    </div>
+    </section>
   );
 };
 

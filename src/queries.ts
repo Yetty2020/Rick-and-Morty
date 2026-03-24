@@ -16,6 +16,9 @@ query GetCharacters($page: Int, $filter: FilterCharacter) {
       id
       image
       status
+      location{
+        name
+      }
     }
   }
   

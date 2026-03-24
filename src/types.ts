@@ -5,6 +5,9 @@ export interface Character {
     gender: string;
     image: string;
     status: string;
+    location:{
+        name: string;
+    }
 }
 
 export interface info{
