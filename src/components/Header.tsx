@@ -3,7 +3,7 @@ import header from "../assets/Header.svg"
 
 function Header() {
   return (
-    <div>
+    <div className="flex items-center justify-center w-full px-2 lg:py-10 ">
         <img src={header} alt="Rick and Morty" />
       
     </div>

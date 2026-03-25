@@ -1,27 +1,22 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useState } from "react";
-import Gallery from "./components/Gallery";
-import Search from "./components/Search";
+
 import CharacterItem from "./components/CharacterItem";
-import Header from "./components/Header";
+
+import LandingPage from "./components/LandingPage";
 
 function App() {
-  const [searchItem, setSearchItem] = useState("");
+   
+
   return (
-    <div className="">
+    <div className="bg-[#0F3A40]">
       <BrowserRouter>
         
         <Routes>
           <Route
             path="/"
             element={<>
-            <Header/>
-            <Search onSearchChange={setSearchItem} />
-            <Gallery
-                searchTerm={searchItem}
-                key={searchItem}
-                onSearchUpdate={setSearchItem}
-              />
+           <LandingPage />
+            
             </>
               
             }

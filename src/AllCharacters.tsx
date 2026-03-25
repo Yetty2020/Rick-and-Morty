@@ -3,13 +3,17 @@ import { GET_CHARACTERS } from "./queries"
 import { type CharactersResponse, type CharactersVars } from "./types"
 
 const AllCharacters = () => {
-  const { loading, error, data } = useQuery<CharactersResponse, CharactersVars>(GET_CHARACTERS, {
-    variables: { page: 2 },
+  const { loading, error, data, fetchMore } = useQuery<CharactersResponse, CharactersVars>(GET_CHARACTERS, {
+    variables: { page: 1 },
+    notifyOnNetworkStatusChange: true,
   });
 
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
   console.log(data)
+  
+
+  return { data, loading, error, fetchMore };
 
   return (
     <div>

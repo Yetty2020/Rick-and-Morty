@@ -56,6 +56,25 @@ const link = ApolloLink.from([errorLink,httpLink])
 
 const client = new ApolloClient({
     link,
-    cache: new InMemoryCache(),
+    cache: new InMemoryCache({
+      typePolicies: {
+        Query: {
+          fields: {
+            characters: {
+              keyArgs: ["filter"],
+              merge(existing, incoming){
+                return {
+                  ...incoming,
+                  results: [
+                    ...(existing?.results || []),
+                    ...incoming.results
+                  ],
+                }
+              }
+            }
+          }
+        }
+      }
+    }),
 });
 export default client

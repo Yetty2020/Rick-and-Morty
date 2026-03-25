@@ -22,7 +22,7 @@ function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
     }, [searchItem, onSearchChange])// this effect runs every time the searchItem changes
 
   return (
-    <div>
+    <div className="py-4">
         <div className=" text-white flex items-center justify-center w-full">
             <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl">
                 <input type="text" placeholder="Find a character..." value={searchItem} onChange={(event) =>{setSearchItem(event.target.value) 
