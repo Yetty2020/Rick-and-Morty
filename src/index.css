@@ -1,1 +1,10 @@
 @import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Bangers&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap');
+
+
+@theme{
+    --font-bangers: "Bangers", system-ui;
+    --font-space-grotesk: "Space Grotesk", sans-serif;
+}

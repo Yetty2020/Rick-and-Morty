@@ -5,7 +5,7 @@ import astro from "../assets/astro.svg";
 import gun from "../assets/gun.svg";
 import neptune from "../assets/neptune.svg";
 import space from "../assets/space.svg";
-import planet from "../assets/planet.svg";
+//import planet from "../assets/planet.svg";
 
 interface CharacterItemProps {
   id: number;
