@@ -67,8 +67,16 @@ function CharacterCard({character, index}: Props & {index: number}) {
       <div className="  sm:h-48 md:h-56 lg:h-64 overflow-hidden rounded-xl">
         <img src={image} alt={name} className="w-full h-full object-cover" />
       </div>
+       <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
+        <p>Species:</p>
+        <p className="font-space-grotesk">{species}</p>
+
+       </div>
+       <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
+        <p>Status</p>
+        <p className="">{status}</p>
+       </div>
        
-       <p className="font-space-grotesk">{species}</p>
        <p>{location.name}</p>
        <p>{locationStatus}</p>
        
