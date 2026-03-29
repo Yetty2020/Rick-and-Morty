@@ -1,5 +1,6 @@
 import { type Character } from "../types"
 import { Link } from "react-router-dom"
+import {layoutConfig} from "../layoutConfig"
 
 interface Props{
     character: Character
@@ -11,27 +12,34 @@ function CharacterCard({character, index}: Props & {index: number}) {
     //destructure to get the props we need
     const {id, name, image, status, species, location } = character
 
+   
+
+    
+
     // to set a variable for the chreacter card
    let spanClass: string;
-   let imageClass: string;
+   
     
     switch(true){
       case (index % 7 === 0):
         spanClass = "col-span-2 row-span-2"
-        imageClass = "h-3/4"
+      
         break
         case (index % 7 === 3):
           spanClass = "col-span-1 row-span-2"
-          imageClass = "h-4/5"
+        
           break
           case (index % 7 === 6):
             spanClass = "col-span-2 row-span-1"
-            imageClass = "h-3/4"
+            
             break
             default:
               spanClass = "col-span-1 row-span-1"
-              imageClass = "h-40"
+              
     }
+
+     //declaring the layout config using the spanClass as the key
+    const config = layoutConfig[spanClass as keyof typeof layoutConfig]
 
     //lookup object to map status to colors
     const statusMap: Record<string, string> ={
@@ -62,26 +70,54 @@ function CharacterCard({character, index}: Props & {index: number}) {
   return (
    
       <Link to={`/character/${id}`} className={`border-4 border-[#EBFF6E] flex flex-col items-center gap-2 px-2 py-4 bg-[#0D7C85] rounded-xl shadow-md h-full w-full ${spanClass} `}>
+        {/* container div */}
+        <div className={`flex flex-col`}>
         <div className={`w-3 h-3 rounded-full ${activeColor} group relative`}></div>
+        {/* outer container */}
+
+        <div className={config.outerContainer}>
+        {/* name */}
         <h2 className="text-[#EBFF6E]  uppercase font-bangers tracking-tighter text-3xl font-bold">{name}</h2>
-      <div className="  sm:h-48 md:h-56 lg:h-64 overflow-hidden rounded-xl">
-        <img src={image} alt={name} className="w-full h-full object-cover" />
-      </div>
-       <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
+        {/* inner-container */}
+
+       
+        <div className={config.innerContainer}>
+           {/* hide or show details */}
+           {config.showDetails && (
+            <div className={config.innerDetails}>
+          <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
         <p>Species:</p>
         <p className="font-space-grotesk">{species}</p>
 
        </div>
        <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
-        <p>Status</p>
+        <p>Status:</p>
         <p className="">{status}</p>
        </div>
+       </div>
+
+           )}
+        
+        {/* image Wrapper */}
+      <div className={`sm:h-48 md:h-56 ${config.image} overflow-hidden rounded-xl`}>
+        <img src={image} alt={name} className="w-full h-full object-cover" />
+      </div>
        
-       <p>{location.name}</p>
-       <p>{locationStatus}</p>
+       
+       {/* <p>{location.name}</p> */}
+       {config.showLocation &&(
+        <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black font-grotesk tracking-tighter w-max mx-auto">
+   <p>{locationStatus}</p>
+  </div>
+
+       ) }
+  
+       
+       </div>
+       </div>
        
         
-        
+        </div>
         </Link>
         
        
