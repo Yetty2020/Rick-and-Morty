@@ -1,8 +1,8 @@
 export const layoutConfig = {
       "col-span-2 row-span-2": {
-        container: " flex flex-col gap-4 items-center",
-        innerContainer: "flex gap-4 ",
-        outerContainer: "flex flex-col gap-4 w-full",
+        container: " flex flex-col gap-6",
+        innerContainer: "flex w-full gap-16  ",
+        outerContainer: "flex flex-col gap-20",
         image: "lg:h-full",
         innerDetails: "flex flex-col justify-between",
         showDetails: true,
@@ -11,8 +11,8 @@ export const layoutConfig = {
 
       "col-span-1 row-span-2":{
         container: "flex-col gap-6  ",
-        innerContainer: "flex flex-col gap-4",
-        outerContainer: "flex flex-col gap-6",
+        innerContainer: "flex flex-col gap-8",
+        outerContainer: "flex flex-col gap-12",
         image: "lg:h-56",
         innerDetails: "flex justify-between",
         showDetails: true,
@@ -31,9 +31,9 @@ export const layoutConfig = {
         "col-span-1 row-span-1":{   
         container: "flex-col gap-4",
         innerContainer: "",
-        outerContainer: "",
+        outerContainer: "flex flex-col gap-6",
         innerDetails:"",
-        image: " md:h-28 lg:h-40 ",
+        image: " md:h-28 lg:h-32 ",
     showDetails: false,
     showLocation: false,
 }

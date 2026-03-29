@@ -18,23 +18,29 @@ function CharacterCard({character, index}: Props & {index: number}) {
 
     // to set a variable for the chreacter card
    let spanClass: string;
+     let textSize: string;
+
    
     
     switch(true){
       case (index % 7 === 0):
         spanClass = "col-span-2 row-span-2"
+        textSize = "text-5xl"
       
         break
         case (index % 7 === 3):
           spanClass = "col-span-1 row-span-2"
+          textSize = "text-4xl"
         
           break
           case (index % 7 === 6):
             spanClass = "col-span-2 row-span-1"
+            textSize = "text-3xl"
             
             break
             default:
               spanClass = "col-span-1 row-span-1"
+              textSize = "text-2xl"
               
     }
 
@@ -56,7 +62,7 @@ function CharacterCard({character, index}: Props & {index: number}) {
 
     //to compare the status to the locations
     let locationStatus: string;
-
+  
     switch(status.toLowerCase()){
       case "alive":
         locationStatus = `You can find me in ${location.name}`
@@ -77,7 +83,7 @@ function CharacterCard({character, index}: Props & {index: number}) {
 
         <div className={config.outerContainer}>
         {/* name */}
-        <h2 className="text-[#EBFF6E]  uppercase font-bangers tracking-tighter text-3xl font-bold">{name}</h2>
+        <h2 className={`text-[#EBFF6E]  uppercase font-bangers tracking-tighter font-bold ${textSize}`}>{name}</h2>
         {/* inner-container */}
 
        
@@ -106,7 +112,7 @@ function CharacterCard({character, index}: Props & {index: number}) {
        
        {/* <p>{location.name}</p> */}
        {config.showLocation &&(
-        <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black font-grotesk tracking-tighter w-max mx-auto">
+        <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black font-grotesk tracking-tighter  self-end w-[clamp(80px,15vw,150px)]">
    <p>{locationStatus}</p>
   </div>
 
