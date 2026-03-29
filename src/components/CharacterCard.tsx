@@ -35,7 +35,7 @@ function CharacterCard({character, index}: Props & {index: number}) {
           break
           case (index % 7 === 6):
             spanClass = "col-span-2 row-span-1"
-            textSize = "text-3xl"
+            textSize = "text-4xl"
             
             break
             default:

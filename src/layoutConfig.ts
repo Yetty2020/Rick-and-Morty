@@ -20,12 +20,12 @@ export const layoutConfig = {
       },
       "col-span-2 row-span-1":{
         container: "flex items-center justify-between ",
-        innerContainer: "flex   ",
-        outerContainer: "flex flex-row-reverse justify-between",
+        innerContainer: "flex gap-14  ",
+        outerContainer: "flex flex-row-reverse justify-between gap-6",
         image: "lg:h-40",
-        innerDetails: "flex flex-col",
+        innerDetails: "flex flex-col gap-6",
         showDetails: false,
-        showLocation: false,
+        showLocation: true,
 
       },
         "col-span-1 row-span-1":{   
