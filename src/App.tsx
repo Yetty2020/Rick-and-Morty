@@ -8,7 +8,13 @@ function App() {
    
 
   return (
-    <div className="bg-[#0F3A40]">
+    <div className="bg-[#0F3A40] ">
+      <svg style={{ position: 'absolute', width: 0, height: 0 }} aria-hidden="true">
+  <filter id="ink-bleed">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" />
+  </filter>
+</svg>
       <BrowserRouter>
         
         <Routes>
@@ -16,6 +22,8 @@ function App() {
             path="/"
             element={<>
            <LandingPage />
+           
+           
             
             </>
               

@@ -75,10 +75,13 @@ function CharacterCard({character, index}: Props & {index: number}) {
     }
   return (
    
-      <Link to={`/character/${id}`} className={`border-4 border-[#EBFF6E] flex flex-col items-center gap-2 px-2 py-4 bg-[#0D7C85] rounded-xl shadow-md h-full w-full ${spanClass} `}>
+      <Link to={`/character/${id}`} className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md  ${spanClass} relative  ${config.background}`}>
         {/* container div */}
         <div className={`flex flex-col`}>
-        <div className={`w-3 h-3 rounded-full ${activeColor} group relative`}></div>
+          {config.statusState && (
+            <div className={`w-3 h-3 rounded-full ${activeColor} group relative`}></div>
+          )}
+        
         {/* outer container */}
 
         <div className={config.outerContainer}>
@@ -91,9 +94,10 @@ function CharacterCard({character, index}: Props & {index: number}) {
            {/* hide or show details */}
            {config.showDetails && (
             <div className={config.innerDetails}>
-          <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
+          <div className="flex flex-col items-center gap-2  border-black uppercase font-grotesk font-bold tracking-tighter relative bg-white border-[3px]  p-3 rounded-4xl max-w-fit">
         <p>Species:</p>
         <p className="font-space-grotesk">{species}</p>
+        <div className="absolute -bottom-3 right-6 w-6 h-6 bg-white border-b-[3px] border-r-[3px] border-black rotate-45 skew-x-15"></div>
 
        </div>
        <div className="flex flex-col items-center gap-2 bg-white p-3 border-2 border-black uppercase font-grotesk font-bold tracking-tighter">
