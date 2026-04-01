@@ -17,10 +17,18 @@ interface CharacterItemProps {
   origin: {
     name: string;
   };
+  episode: []
+}
+
+interface EpisodeData {
+    id: number;
+    name: string;
+    episode: string;
 }
 
 function CharacterItem() {
   const [character, setCharacter] = useState<CharacterItemProps | null>(null);
+  const [episodes, setEpisodes] = useState<EpisodeData[]>([])
   const [loading, setLoading] = useState(true);
   const { id } = useParams<{ id: string }>();
 
@@ -28,11 +36,19 @@ function CharacterItem() {
     const getCharacterData = async () => {
       try {
         setLoading(true);
+        //to get the character
         const response: AxiosResponse<CharacterItemProps> = await axios.get(
           `https://rickandmortyapi.com/api/character/${id}`,
         );
         console.log(response.data);
         setCharacter(response.data);
+
+        //to get episode, fetch first five episodes
+        const episodePromises = response.data.episode.slice(0,5).map((url) => 
+        axios.get<EpisodeData>(url).then((res) => res.data ))
+
+        const episodeResults = await Promise.all(episodePromises)
+        setEpisodes(episodeResults)
       } catch (error) {
         console.error(error);
       } finally {
@@ -52,8 +68,18 @@ function CharacterItem() {
     return <div>Character not found</div>;
   }
   return (
-    <div className="min-h-screen w-full flex items-center justify-center p-6">
-      <div className="flex   gap-4 bg-white p-10 rounded-2xl w-full max-w-3xl justify-between">
+    <div className="min-h-screen w-full flex items-center justify-center p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-b-[5px] border-r-[5px] border-t-2 border-l-2 bg-[#0D7C85] border-[#EBFF6E] rotate-[0.5deg] filter-[url(#ink-bleed)] ">
+      <div className="flex   gap-4 bg-white p-10 rounded-lg w-full max-w-3xl justify-between shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-b-[5px] border-r-[5px] border-t-2 border-l-2  border-[#EBFF6E] -rotate-1 ">
+        {/* EPISODE TERMINAL */}
+        <div className="bg-black p-4 rounded-lg border-2 border-[#EBFF6E] font-mono text-xs">
+          <p className="text-[#EBFF6E] mb-2 uppercase tracking-widest border-b border-[#EBFF6E]/30 pb-1">Recent Logs:</p>
+          {episodes.map((ep) => (
+            <div key={ep.id} className="text-[#87F54E] flex justify-between mb-1">
+              <span>{ep.episode}</span>
+              <span className="text-white opacity-80">{ep.name}</span>
+            </div>
+          ))}
+        </div>
        <div className="w-2/3">
          <img
           src={character?.image}
@@ -97,7 +123,9 @@ function CharacterItem() {
               />
             </div>
         </div>
+        
       </div>
+      
     </div>
   );
 }

@@ -35,10 +35,12 @@ function CharacterCard({ character, index }: Props & { index: number }) {
       textSize = "text-lg md:text-2xl";
   }
 
-  // derive a base layout key (e.g. "col-span-2 row-span-2") from responsive spanClass
-  const colMatch = spanClass.match(/col-span-\d/);
-  const rowMatch = spanClass.match(/row-span-\d/);
-  const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span-1"}`;
+  
+  // This regex ensures we get "col-span-X" only if it's NOT prefixed by lg: or md:
+const colMatch = spanClass.match(/(?<!\S)col-span-\d/); 
+const rowMatch = spanClass.match(/(?<!\S)row-span-\d/);
+
+const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span-1"}`;
 
   // look up config and provide safe defaults to avoid runtime errors when a key is missing
   const defaultConfig = {
@@ -95,11 +97,11 @@ function CharacterCard({ character, index }: Props & { index: number }) {
     >
       {/* container div */}
       <div className={`flex flex-col`}>
-        {config.statusState && (
+        {/* {config.statusState && (
           <div
-            className={`w-3 h-3 rounded-full ${activeColor} group relative`}
+            className={`w-3 h-3 rounded-full ${activeColor} group relative hidden md:block`}
           ></div>
-        )}
+        )} */}
 
         {/* outer container */}
 

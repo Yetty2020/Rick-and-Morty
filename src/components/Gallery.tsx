@@ -107,14 +107,10 @@ const Gallery = ({
 
   return (
     <section>
-      <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 ">
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 ">
         {data?.characters.results.map((character, index) => {
           return (
-            <CharacterCard
-              key={character.id}
-              character={character}
-              index={index}
-            />
+            <CharacterCard key={character.id} character={character} index={index} />
           );
         })}
 
