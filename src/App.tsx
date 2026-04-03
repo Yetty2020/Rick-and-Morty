@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import CharacterItem from "./components/CharacterItem";
 
 import LandingPage from "./components/LandingPage";
+import NotFound404 from "./components/NotFound404";
 
 function App() {
    
@@ -30,7 +31,7 @@ function App() {
             }
           />
           <Route path="/character/:id" element={<CharacterItem />} />
-          <Route path="*" element={<div>404 Not Found</div>} />
+          <Route path="*" element={<NotFound404/>} />
         </Routes>
       </BrowserRouter>
 

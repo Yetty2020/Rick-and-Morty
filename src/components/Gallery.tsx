@@ -1,6 +1,8 @@
 import CharacterCard from "./CharacterCard";
 import { useCharacters } from "../useCharacters";
 import { useState, useRef, useEffect } from "react";
+import Loading from "./Loading";
+import CharacterError from "./characterError";
 
 const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
 
@@ -66,7 +68,7 @@ const Gallery = ({
   //   }
   // };
 
-  if (loading && !data) return <div>Initial Portal Jump...</div>;
+  if (loading && !data) return <Loading/>;
   // to check for not found error
   if (error) {
     const NotFound =
@@ -75,10 +77,11 @@ const Gallery = ({
 
     if (NotFound) {
       return (
-        <div>
-          <h3>No charater found for {searchTerm}</h3>
-          <p>Maybe they're in another dimension</p>
-        </div>
+        // <div>
+        //   <h3>No charater found for {searchTerm}</h3>
+        //   <p>Maybe they're in another dimension</p>
+        // </div>
+        <CharacterError/>
       );
     }
 
@@ -99,6 +102,7 @@ const Gallery = ({
           ))}
         </div>
         <button onClick={() => onSearchUpdate("")}>Show All Characters</button>
+        <CharacterError/>
       </div>
     );
   }
@@ -107,7 +111,7 @@ const Gallery = ({
 
   return (
     <section>
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 ">
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 bg-[#0F3A40] ">
         {data?.characters.results.map((character, index) => {
           return (
             <CharacterCard key={character.id} character={character} index={index} />
@@ -117,7 +121,7 @@ const Gallery = ({
         {/* Sentinel */}
         {/* each time this is crossed it triggers a new page */}
         <div ref={sentinelRef} className="">
-          {loading && <p className="text-red-700">Loading...</p>}
+          {loading && <Loading/>}
         </div>
       </div>
     </section>

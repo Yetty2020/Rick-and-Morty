@@ -6,7 +6,7 @@ export default function LandingPage() {
 
      const [searchItem, setSearchItem] = useState("");
   return (
-    <div className="p-4 md:p-0">
+    <div className="p-4 md:p-0 bg-[#0F3A40] ">
         <Header/>
         <Search onSearchChange={setSearchItem} />
             <Gallery
