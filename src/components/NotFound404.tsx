@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 // NotFound404.tsx
 export default function NotFound404() {
+ 
   return (
     <div className="min-h-screen bg-[#000] flex flex-col items-center justify-center p-6 overflow-hidden">
       {/* Floating Assets as "Space Junk" */}

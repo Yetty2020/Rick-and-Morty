@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios, { type AxiosResponse } from "axios";
 import astro from "../assets/astro.svg";
@@ -12,6 +12,8 @@ import { TbArrowWaveRightUp } from "react-icons/tb";
 import planet from "../assets/planet.svg";
 import { GiTreasureMap } from "react-icons/gi";
 import { TiArrowBackOutline } from "react-icons/ti";
+import Loading from "./Loading";
+import CharacterError from "./characterError";
 
 interface CharacterItemProps {
   id: number;
@@ -40,6 +42,7 @@ function CharacterItem() {
   const [episodes, setEpisodes] = useState<EpisodeData[]>([]);
   const [loading, setLoading] = useState(true);
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
 
   const statusMap = {
     Alive: {
@@ -88,7 +91,10 @@ function CharacterItem() {
         const episodeResults = await Promise.all(episodePromises);
         setEpisodes(episodeResults);
       } catch (error) {
-        console.error(error);
+        if (error.response?.status === 404) {
+        // Trigger the top-level route you defined in App.tsx
+        navigate("/character-not-found", { replace: true });
+      }
       } finally {
         setLoading(false);
       }
@@ -100,10 +106,10 @@ function CharacterItem() {
   }, [id]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <Loading/>;
   }
   if (!character) {
-    return <div>Character not found</div>;
+    return <CharacterError/>;
   }
   return (
     <div className="min-h-screen lg:h-screen w-full flex flex-col lg:flex-row items-center justify-center p-6  border-l-2 bg-[#0D7C85] border-[#EBFF6E]  filter-[url(#ink-bleed)]  ">

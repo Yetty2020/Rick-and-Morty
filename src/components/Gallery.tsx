@@ -4,15 +4,9 @@ import { useState, useRef, useEffect } from "react";
 import Loading from "./Loading";
 import CharacterError from "./characterError";
 
-const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
+// const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
 
-const Gallery = ({
-  searchTerm,
-  onSearchUpdate,
-}: {
-  searchTerm: string;
-  onSearchUpdate: (val: string) => void;
-}) => {
+const Gallery = ({ searchTerm, onSearchUpdate }: { searchTerm: string; onSearchUpdate: (val: string) => void }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { loading, error, data, fetchMore } = useCharacters(
     currentPage,
@@ -81,11 +75,16 @@ const Gallery = ({
         //   <h3>No charater found for {searchTerm}</h3>
         //   <p>Maybe they're in another dimension</p>
         // </div>
-        <CharacterError/>
+        <CharacterError onSearchUpdate={() => onSearchUpdate("")}/>
       );
     }
 
-    return <div>Portal Failure: {error?.message}</div>;
+    return <div className="min-h-screen text-center">
+      <h1 className="text-[#EBFF6E] text-[15rem] font-black leading-none [text-shadow:10px_10px_0px_#0D7C85]">
+          Portal Failure: {error?.message}
+        </h1>
+      
+      </div>;
   }
 
   //to check if data exists but results are empty
@@ -93,16 +92,16 @@ const Gallery = ({
   if (!characters || characters?.length === 0) {
     return (
       <div>
-        <p>Try searching for one of these instead:</p>
+        {/* <p>Try searching for one of these instead:</p>
         <div>
           {SUGGESTIONS.map((name) => (
             <button key={name} onClick={() => onSearchUpdate(name)}>
               {name}
             </button>
           ))}
-        </div>
-        <button onClick={() => onSearchUpdate("")}>Show All Characters</button>
-        <CharacterError/>
+        </div> */}
+        
+        <CharacterError onSearchUpdate={() => onSearchUpdate("")}/>
       </div>
     );
   }

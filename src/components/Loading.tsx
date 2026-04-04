@@ -1,7 +1,7 @@
 // Loading.tsx
 export default function Loading() {
   return (
-    <div className="min-h-screen w-full bg-[#0D7C85] flex flex-col items-center justify-center relative overflow-hidden">
+    <div className="min-h-screen w-full bg-[#0F3A40] flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background "Warp" Effect */}
       <div className="absolute inset-0 opacity-20 animate-pulse bg-[radial-gradient(circle,_#EBFF6E_10%,_transparent_70%)]" />
       

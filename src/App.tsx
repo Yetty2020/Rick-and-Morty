@@ -4,6 +4,7 @@ import CharacterItem from "./components/CharacterItem";
 
 import LandingPage from "./components/LandingPage";
 import NotFound404 from "./components/NotFound404";
+import CharacterNotFound from "./components/characterError";
 
 function App() {
    
@@ -31,6 +32,7 @@ function App() {
             }
           />
           <Route path="/character/:id" element={<CharacterItem />} />
+          <Route path="/character-not-found" element={<CharacterNotFound />} />
           <Route path="*" element={<NotFound404/>} />
         </Routes>
       </BrowserRouter>
