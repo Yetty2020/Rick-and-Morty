@@ -1,4 +1,9 @@
 import header from "../assets/Header.svg"
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
+import { useRef } from 'react';
 
 
 function Header() {

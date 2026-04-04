@@ -3,8 +3,15 @@
 
 import { useNavigate } from "react-router-dom";
 
-export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearchUpdate?: () => void; onReset?: () => void }) {
+export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearchUpdate?: (val: string  ) => void; onReset?: () => void }) {
+    void onSearchUpdate;
+    
   const navigate = useNavigate();
+  const SUGGESTIONS = [
+  { name: "Rick Sanchez", id: 1 },
+  { name: "Morty Smith", id: 2 },
+  { name: "Summer Smith", id: 3 }
+];
 
   return (
     <div className="h-screen  flex items-center justify-center p-6">
@@ -21,10 +28,26 @@ export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearc
           The character you are looking for has been erased from this timeline by the Council of Ricks. No biological signatures detected.
         </p>
 
+        <div className="mt-10 pt-6 border-t border-gray-800">
+  <p className="text-[#EBFF6E] font-mono text-xs uppercase mb-3">Try another timeline:</p>
+  <div className="flex flex-wrap gap-3">
+    {SUGGESTIONS.map((char) => (
+        <button 
+          key={char.id}
+          // 2. This skips the home page and goes straight to the profile
+          onClick={() => navigate(`/character/${char.id}`)} 
+          className="..."
+        >
+          View {char.name}
+        </button>
+      ))}
+  </div>
+</div>
+
         <button
           onClick={() => {
-            if (onSearchUpdate) {
-              onSearchUpdate();
+            if (onReset) {
+              onReset();
             } else {
               navigate("/");
             }
