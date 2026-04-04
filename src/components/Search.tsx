@@ -1,31 +1,31 @@
 import { useEffect, useState} from "react"
 
-function Search({onSearchChange}: {onSearchChange: (val: string) => void}) {
+function Search({onSearchChange, currentValue}: {onSearchChange: (val: string) => void; currentValue: string}) {
 
-    const [searchItem, setSearchItem ] = useState("")
+    const [searchItem, setSearchItem] = useState(currentValue);
     //debounce value to trigger API fetch
+
+    useEffect(() => {
+    setSearchItem(currentValue);
+  }, [currentValue]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      // Only trigger if the value is actually different to avoid loops
+      if (searchItem !== currentValue) {
+        onSearchChange(searchItem);
+      }
+    }, 1000);
+    return () => clearTimeout(handler);
+  }, [searchItem, onSearchChange, currentValue]);
    
 
-    // the timer
-    useEffect(() =>{
-        const handler = setTimeout(() =>{
-           
-                onSearchChange(searchItem)
-        }, 1000) // delay of 500ms
-
-        //to handle the cleanup
-        //cancels the previous timer and starts a new one if the user types before the delay is over
-        return () =>{
-            clearTimeout(handler)
-
-        }
-    }, [searchItem, onSearchChange])// this effect runs every time the searchItem changes
-
+   
   return (
     <div className="py-4 mb-2">
         <div className=" text-white flex items-center justify-center w-full">
             <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl">
-                <input type="text" placeholder="Find a character..." value={searchItem} onChange={(event) =>{setSearchItem(event.target.value) 
+                <input type="text" placeholder="Find a character..." value={currentValue} onChange={(event) =>{setSearchItem(event.target.value) 
             
 
         }} className="outline-none border-none text-white focus-none w-full flex-1 bg-transparent " />

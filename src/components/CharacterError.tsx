@@ -1,8 +1,11 @@
 // CharacterError.tsx
 
 
-export default function CharacterNotFound({ onSearchUpdate }: { onSearchUpdate: () => void }) {
-  
+import { useNavigate } from "react-router-dom";
+
+export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearchUpdate?: () => void; onReset?: () => void }) {
+  const navigate = useNavigate();
+
   return (
     <div className="h-screen  flex items-center justify-center p-6">
       <div className="max-w-2xl w-full border-4 border-[#EBFF6E] p-10 bg-[#1a1a1a] shadow-[15px_15px_0px_0px_#EBFF6E] -rotate-1 relative">
@@ -18,8 +21,14 @@ export default function CharacterNotFound({ onSearchUpdate }: { onSearchUpdate: 
           The character you are looking for has been erased from this timeline by the Council of Ricks. No biological signatures detected.
         </p>
 
-        <button 
-          onClick={() => onSearchUpdate()} 
+        <button
+          onClick={() => {
+            if (onSearchUpdate) {
+              onSearchUpdate();
+            } else {
+              navigate("/");
+            }
+          }}
           className="bg-white text-black px-8 py-3 font-bold border-4 border-black shadow-[6px_6px_0px_0px_#EBFF6E] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all uppercase"
         >
           Return to Citadel

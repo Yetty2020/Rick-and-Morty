@@ -97,11 +97,11 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
     >
       {/* container div */}
       <div className={`flex flex-col`}>
-        {/* {config.statusState && (
+        {config.statusState && (
           <div
             className={`w-3 h-3 rounded-full ${activeColor} group relative hidden md:block`}
           ></div>
-        )} */}
+        )}
 
         {/* outer container */}
 

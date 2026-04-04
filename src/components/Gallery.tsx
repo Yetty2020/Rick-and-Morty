@@ -6,7 +6,15 @@ import CharacterError from "./characterError";
 
 // const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
 
-const Gallery = ({ searchTerm, onSearchUpdate }: { searchTerm: string; onSearchUpdate: (val: string) => void }) => {
+const Gallery = ({
+  searchTerm, onSearchUpdate, onReset
+  
+}: {
+  searchTerm: string;
+  onSearchUpdate: (val: string) => void;
+  onReset: () => void;
+  
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const { loading, error, data, fetchMore } = useCharacters(
     currentPage,
@@ -75,7 +83,7 @@ const Gallery = ({ searchTerm, onSearchUpdate }: { searchTerm: string; onSearchU
         //   <h3>No charater found for {searchTerm}</h3>
         //   <p>Maybe they're in another dimension</p>
         // </div>
-        <CharacterError onSearchUpdate={() => onSearchUpdate("")}/>
+        <CharacterError onSearchUpdate={() => onSearchUpdate("")} onReset={onReset}/>
       );
     }
 
@@ -101,7 +109,7 @@ const Gallery = ({ searchTerm, onSearchUpdate }: { searchTerm: string; onSearchU
           ))}
         </div> */}
         
-        <CharacterError onSearchUpdate={() => onSearchUpdate("")}/>
+        <CharacterError onSearchUpdate={() => onSearchUpdate("")} onReset={onReset}/>
       </div>
     );
   }

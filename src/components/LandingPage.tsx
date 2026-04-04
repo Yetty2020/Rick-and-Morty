@@ -1,41 +1,41 @@
-import { useState } from "react";
-import Gallery from "./Gallery"
-import Header from "./Header"
-import Search from "./Search"
 import { useSearchParams, useNavigate } from "react-router-dom";
+import Gallery from "./Gallery";
+import Header from "./Header";
+import Search from "./Search";
+
 export default function LandingPage() {
-
-     const [searchItem, setSearchItem] = useState("");
-
-     const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
-  
-  const currentSearch = searchParams.get("search") || "";
+
+  // 1. Derive the search term DIRECTLY from the URL.
+  // No useState = No race condition.
+  const searchItem = searchParams.get("search") || "";
 
   const handleSearchChange = (newValue: string) => {
     if (newValue) {
-      // This changes the URL to /?search=name
       setSearchParams({ search: newValue }, { replace: true });
     } else {
-      // This clears the URL to /
-      setSearchParams({});
+      setSearchParams({}, { replace: true });
     }
   };
 
   const resetToHome = () => {
-    setSearchParams({}); // Clears the search param
-    navigate("/");       // Forces a re-load of the base route
+    // 2. Simply navigate to the clean root. 
+    // React Router will see the URL change and searchItem will automatically become ""
+    navigate("/", { replace: true });
   };
+
   return (
-    <div className="p-4 md:p-0 bg-[#0F3A40] min-h-screen ">
-        <Header/>
-        <Search onSearchChange={setSearchItem} />
-            <Gallery
-                searchTerm={searchItem}
-                key={searchItem}
-                onSearchUpdate={setSearchItem}
-              />
-      
+    <div className="p-4 md:p-0 bg-[#0F3A40] min-h-screen">
+      <Header />
+      {/* 3. Pass searchItem (the URL value) back into the Search bar */}
+      <Search onSearchChange={handleSearchChange} currentValue={searchItem} />
+      <Gallery
+        searchTerm={searchItem}
+        key={searchItem} // This still triggers the re-fetch
+        onSearchUpdate={handleSearchChange}
+        onReset={resetToHome}
+      />
     </div>
-  )
+  );
 }
