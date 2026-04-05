@@ -3,8 +3,17 @@ import { useCharacters } from "../useCharacters";
 import { useState, useRef, useEffect } from "react";
 import Loading from "./Loading";
 import CharacterError from "./characterError";
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP);
+gsap.registerPlugin(ScrollTrigger) 
+
 
 // const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
+
+
 
 const Gallery = ({
   searchTerm, onSearchUpdate, onReset
@@ -15,12 +24,50 @@ const Gallery = ({
   onReset: () => void;
   
 }) => {
+ 
   const [currentPage, setCurrentPage] = useState(1);
   const { loading, error, data, fetchMore } = useCharacters(
     currentPage,
     searchTerm,
   );
   const sentinelRef = useRef<HTMLDivElement>(null);
+  const container = useRef<HTMLDivElement>(null)
+
+  useGSAP(() =>{ 
+    // if (loading || !data?.results) return;
+
+    const cards = gsap.utils.toArray(".gallery-item")// to get all items in the list
+    const randomRot = Math.floor(Math.random() * 5) - 2;
+   
+
+    //to give each items item its logis 
+    cards.forEach((card, index) =>{
+
+      const element = card as HTMLElement
+
+      gsap.to(element, {
+       scale: 1, 
+      opacity: 1,
+      rotation: randomRot,
+     
+      duration: 0.5,
+      ease: "back.out(1.7)",
+      // The secret sauce: small delay for the first cards
+      // This makes them pop one-by-one on page load
+      delay: index * 0.15, 
+      scrollTrigger: {
+        trigger: element,
+        start: "top 90%", // Trigger earlier so they pop as they enter
+       
+        toggleActions: "play none none reverse",
+        
+        }
+      })
+
+    })
+
+
+  }, {scope:container,  dependencies: [data]})
 
   useEffect(() => {
     // If there's no next page, don't bother watching the bottom
@@ -87,7 +134,7 @@ const Gallery = ({
       );
     }
 
-    return <div className="min-h-screen text-center">
+    return <div className="min-h-screen text-center" >
       <h1 className="text-[#EBFF6E] text-[15rem] font-black leading-none [text-shadow:10px_10px_0px_#0D7C85]">
           Portal Failure: {error?.message}
         </h1>
@@ -117,11 +164,15 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section>
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 bg-[#0F3A40] ">
+    <section >
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 bg-[#0F3A40] " ref={container}>
         {data?.characters.results.map((character, index) => {
           return (
-            <CharacterCard key={character.id} character={character} index={index} />
+
+           
+               <CharacterCard key={character.id} character={character} index={index} className="block gallery-item opacity-0 scale-50"  />
+          
+           
           );
         })}
 

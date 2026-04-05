@@ -4,9 +4,10 @@ import { layoutConfig } from "../layoutConfig";
 
 interface Props {
   character: Character;
+  className?: string;
 }
 
-function CharacterCard({ character, index }: Props & { index: number }) {
+function CharacterCard({ character, className, index }: Props & { index: number }) {
   //destructure to get the props we need
   const { id, name, image, status, species, location } = character;
 
@@ -93,7 +94,7 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
   return (
     <Link
       to={`/character/${id}`}
-      className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md  ${spanClass} relative  ${config.background}`}
+      className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md  ${spanClass} relative  ${config.background} ${className}`}
     >
       {/* container div */}
       <div className={`flex flex-col`}>
