@@ -1,6 +1,26 @@
 import { useEffect, useState} from "react"
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+
+gsap.registerPlugin(useGSAP);
+import { useRef } from 'react';
+
 
 function Search({onSearchChange, currentValue}: {onSearchChange: (val: string) => void; currentValue: string}) {
+
+  const container = useRef(null)
+
+  useGSAP(() =>{
+    gsap.from(".search-element", {
+      y: 50,
+    scaleX: 0.5,
+    scaleY: 0.2,
+    opacity: 0,
+    delay: 0.7, 
+    duration: 1,
+    ease: "elastic.out(1, 0.5)"
+    })
+  }, {scope:container})//tells Gsap to only look in the scope of the container
 
     const [searchItem, setSearchItem] = useState(currentValue);
     //debounce value to trigger API fetch
@@ -22,13 +42,13 @@ function Search({onSearchChange, currentValue}: {onSearchChange: (val: string) =
 
    
   return (
-    <div className="py-4 mb-2">
+    <div className="py-4 mb-2" ref={container}>
         <div className=" text-white flex items-center justify-center w-full">
-            <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl">
+            <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl search-element">
                 <input type="text" placeholder="Find a character..." value={currentValue} onChange={(event) =>{setSearchItem(event.target.value) 
             
 
-        }} className="outline-none border-none text-white focus-none w-full flex-1 bg-transparent " />
+        }} className="outline-none border-none text-white focus-none w-full flex-1 bg-transparent  " />
         
 
         
