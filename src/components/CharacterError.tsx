@@ -1,9 +1,9 @@
-// CharacterError.tsx
+
 
 
 import { useNavigate } from "react-router-dom";
 
-export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearchUpdate?: (val: string  ) => void; onReset?: () => void }) {
+export default function CharacterError({ onSearchUpdate, onReset }: { onSearchUpdate?: (val: string  ) => void; onReset?: () => void }) {
     void onSearchUpdate;
     
   const navigate = useNavigate();
@@ -30,15 +30,15 @@ export default function CharacterNotFound({ onSearchUpdate, onReset }: { onSearc
 
         <div className="mt-10 pt-6 border-t border-gray-800">
   <p className="text-[#EBFF6E] font-mono text-xs uppercase mb-3">Try another timeline:</p>
-  <div className="flex flex-wrap gap-3">
+  <div className="flex flex-wrap gap-6 mb-5">
     {SUGGESTIONS.map((char) => (
         <button 
           key={char.id}
           // 2. This skips the home page and goes straight to the profile
           onClick={() => navigate(`/character/${char.id}`)} 
-          className="..."
+          className="bg-[#407772] text-black border-2 border-black shadow-[3px_3px_0px_0px_#EBFF6E] hover:translate-x-1 hover:translate-y-1 hover:shadow-none transition-all text-sm p-1"
         >
-          View {char.name}
+           {char.name}
         </button>
       ))}
   </div>

@@ -13,7 +13,7 @@ import planet from "../assets/planet.svg";
 import { GiTreasureMap } from "react-icons/gi";
 import { TiArrowBackOutline } from "react-icons/ti";
 import Loading from "./Loading";
-import CharacterError from "./characterError";
+import CharacterError from "./CharacterError";
 
 interface CharacterItemProps {
   id: number;
@@ -130,7 +130,7 @@ function CharacterItem() {
             <img
               src={character?.image}
               alt={character?.name}
-              className="border-4 border-black rounded-xl w-full shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]"
+              className="border-4 border-black rounded-xl w-full lg:w-[80%] shadow-[8px_8px_0px_0px_rgba(0,0,0,0.2)]"
             />
           </div>
           <div className="p-4 rounded-lg  font-mono text-xs lg:flex items-center  justify-between w-full bg-[#EBFF6E] border-2 border-black  lg:px-6 lg:py-2 font-bold shadow-[4px_4px_0px_0px_#000] hidden ">

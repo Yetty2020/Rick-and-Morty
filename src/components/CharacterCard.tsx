@@ -64,19 +64,8 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
   >;
   const config = cfgLookup[layoutKey] ?? defaultConfig;
 
-  //lookup object to map status to colors
-  const statusMap: Record<string, string> = {
-    alive: "bg-green-500",
-    dead: "bg-red-500",
-    unknown: "bg-gray-500",
-  };
-
-  // to change it to lowercas to match the keys in the statusMap
-  const statusKey = status.toLowerCase();
-
-  // to compare result from api with that from the lookup object
-  const activeColor =
-    statusMap[statusKey as keyof typeof statusMap] || "bg-gray-500";
+  
+  
 
   //to compare the status to the locations
   let locationStatus: string;
@@ -94,15 +83,17 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
   return (
     <Link
       to={`/character/${id}`}
-      className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md  ${spanClass} relative  ${config.background} ${className}`}
+      className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md hover:scale-105 
+  hover:shadow-[0_0_25px_rgba(151,206,76,0.4)]
+  cursor-pointer  ${spanClass} relative  ${config.background} ${className}`}
     >
       {/* container div */}
       <div className={`flex flex-col`}>
-        {config.statusState && (
+        {/* {config.statusState && (
           <div
             className={`w-3 h-3 rounded-full ${activeColor} group relative hidden md:block`}
           ></div>
-        )}
+        )} */}
 
         {/* outer container */}
 
@@ -114,11 +105,28 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
             {name}
           </h2>
           {/* inner-container */}
+          
 
           <div className={config.innerContainer}>
             {/* hide or show details */}
             {config.showDetails && (
+
+              
               <div className={config.innerDetails}>
+
+                {/* The SVG Arrow */}
+    <svg className="status-arrow w-6 h-6 -rotate-90" viewBox="0 0 24 24">
+      <path 
+        className="arrow-path"
+        d="M3 12h18m-6-6l6 6-6 6" 
+        fill="none" 
+        stroke="currentColor" 
+        strokeWidth="2"
+      />
+    </svg>
+
+                
+
                 <div className="flex flex-col items-center gap-2  border-black uppercase font-grotesk font-bold tracking-tighter relative bg-white border-[3px]  p-3 rounded-4xl max-w-fit">
                   <p>Species:</p>
                   <p className="font-space-grotesk">{species}</p>
@@ -138,7 +146,7 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
               <img
                 src={image}
                 alt={name}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover transition-all duration-500 group-hover:brightness-125 group-hover:contrast-110"
               />
             </div>
 

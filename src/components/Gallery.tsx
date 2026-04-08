@@ -37,7 +37,7 @@ const Gallery = ({
     // if (loading || !data?.results) return;
 
     const cards = gsap.utils.toArray(".gallery-item")// to get all items in the list
-    const randomRot = Math.floor(Math.random() * 5) - 2;
+    // const randomRot = Math.floor(Math.random() * 3) - 1;
    
 
     //to give each items item its logis 
@@ -48,7 +48,7 @@ const Gallery = ({
       gsap.to(element, {
        scale: 1, 
       opacity: 1,
-      rotation: randomRot,
+     
      
       duration: 0.5,
       ease: "back.out(1.7)",
@@ -135,7 +135,7 @@ const Gallery = ({
     }
 
     return <div className="min-h-screen text-center" >
-      <h1 className="text-[#EBFF6E] text-[15rem] font-black leading-none [text-shadow:10px_10px_0px_#0D7C85]">
+      <h1 className="text-[#EBFF6E] text-[5rem] font-black leading-none [text-shadow:10px_10px_0px_#0D7C85]">
           Portal Failure: {error?.message}
         </h1>
       
