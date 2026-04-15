@@ -164,8 +164,15 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section >
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 bg-[#0F3A40] " ref={container}>
+    <section className="px-6" >
+
+     <div className="flex-1  p-6 border-2 border-b-[#EBFF6E] rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
+    <h1 className="text-[#EBFF6E] font-black text-3xl md:text-5xl uppercase italic tracking-tighter">
+      Variant Registry
+    </h1>
+    
+  </div>
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 lg:px-20 bg-[#0F3A40] " ref={container}>
         {data?.characters.results.map((character, index) => {
           return (
 

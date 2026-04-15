@@ -89,12 +89,7 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
     >
       {/* container div */}
       <div className={`flex flex-col`}>
-        {/* {config.statusState && (
-          <div
-            className={`w-3 h-3 rounded-full ${activeColor} group relative hidden md:block`}
-          ></div>
-        )} */}
-
+        
         {/* outer container */}
 
         <div className={config.outerContainer}>
@@ -114,16 +109,6 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
               
               <div className={config.innerDetails}>
 
-                {/* The SVG Arrow */}
-    <svg className="status-arrow w-6 h-6 -rotate-90" viewBox="0 0 24 24">
-      <path 
-        className="arrow-path"
-        d="M3 12h18m-6-6l6 6-6 6" 
-        fill="none" 
-        stroke="currentColor" 
-        strokeWidth="2"
-      />
-    </svg>
 
                 
 

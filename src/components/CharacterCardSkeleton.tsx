@@ -29,7 +29,7 @@ function CharacterCardSkeleton({ index }: { index: number }) {
       {/* TOP: Skeletal Layout Block */}
       <div className=" col-span-2 row-span-3  space-y-3 mb-4 border-4 border-[#0f2a0f] p-4 rounded-xl flex flex-col justify-between items-center bg-[#060d06]">
           <ScanlineOverlay />
-        <SkeletonBlock className="h-10 w-3/4" />
+        <SkeletonBlock className="h-15 w-2/4 rounded-md" />
         <div className="flex justify-between gap-4">
             <SkeletonBlock className=" h-15 w-15"/>
             <SkeletonBlock className=" h-15 w-15"/>
