@@ -3,7 +3,7 @@ export default function Loading() {
   return (
     <div className="min-h-screen w-full bg-[#0F3A40] flex flex-col items-center justify-center relative overflow-hidden">
       {/* Background "Warp" Effect */}
-      <div className="absolute inset-0 opacity-20 animate-pulse bg-[radial-gradient(circle,_#EBFF6E_10%,_transparent_70%)]" />
+      <div className="absolute inset-0 opacity-20 animate-pulse bg-[radial-gradient(circle,#EBFF6E_10%,transparent_70%)]" />
       
       {/* The Floating Asset */}
       <div className="relative animate-bounce">
@@ -11,7 +11,7 @@ export default function Loading() {
         <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-20 h-4 bg-black/20 blur-lg rounded-full" />
       </div>
 
-      <h2 className="mt-10 font-black text-4xl text-[#EBFF6E] uppercase italic tracking-tighter animate-pulse [text-shadow:4px_4px_0px_#000]">
+      <h2 className="mt-10 font-black text-xl lg:text-4xl text-[#EBFF6E] uppercase italic tracking-tighter animate-pulse [text-shadow:4px_4px_0px_#000]">
         Relocating to Dimension...
       </h2>
       

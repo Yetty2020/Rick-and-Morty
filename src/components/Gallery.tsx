@@ -7,6 +7,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CharacterCardSkeleton from "./CharacterCardSkeleton";
+import { ComicSticker } from "./ComicSticker";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger) 
@@ -151,12 +152,20 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section className="px-6 comic-dots paper-texture " >
+    <section className="px-6   " >
 
      <div className=" ">
-    <h1 className="text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black]">
+      <ComicSticker text="Kapow!" 
+    position="top-0 -left-10 -rotate-12" 
+    color="bg-cyan-400"/>
+    <h1 className=" text-xl md:text-2xl lg:text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black] mb-2 md:mb-4">
   Character Portal
 </h1>
+<ComicSticker 
+    text="Bam!" 
+    position="top-2 -right-7 rotate-12" 
+    color="bg-yellow-400" 
+  />
     
   </div>
   <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 lg:px-20 bg-[#0F3A40]  " ref={container}>

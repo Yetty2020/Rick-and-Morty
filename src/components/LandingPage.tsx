@@ -26,8 +26,9 @@ export default function LandingPage() {
   };
 
   return (
-    <div className="p-4 md:p-0 bg-[#0F3A40] min-h-screen">
-      <Header />
+    <div className="p-4 md:px-10 bg-[#0F3A40] min-h-screen comic-dots paper-texture ">
+      <div className="border-r-4 border-l-4 border-t-4 border-[black] ">
+        <Header />
       {/* 3. Pass searchItem (the URL value) back into the Search bar */}
       <Search onSearchChange={handleSearchChange} currentValue={searchItem} />
       <Gallery
@@ -36,6 +37,9 @@ export default function LandingPage() {
         onSearchUpdate={handleSearchChange}
         onReset={resetToHome}
       />
+
+      </div>
+      
     </div>
   );
 }
