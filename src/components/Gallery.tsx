@@ -1,11 +1,12 @@
 import CharacterCard from "./CharacterCard";
 import { useCharacters } from "../useCharacters";
-import { useState, useRef, useEffect } from "react";
-import Loading from "./Loading";
+import { useRef, useEffect } from "react";
+//import Loading from "./Loading";
 import CharacterError from "./CharacterError";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CharacterCardSkeleton from "./CharacterCardSkeleton";
 
 gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger) 
@@ -25,9 +26,8 @@ const Gallery = ({
   
 }) => {
  
-  const [currentPage, setCurrentPage] = useState(1);
   const { loading, error, data, fetchMore } = useCharacters(
-    currentPage,
+    1,
     searchTerm,
   );
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -117,7 +117,7 @@ const Gallery = ({
   //   }
   // };
 
-  if (loading && !data) return <Loading/>;
+  if (loading && !data) return <CharacterCardSkeleton index={10} />;
   // to check for not found error
   if (error) {
     const NotFound =
@@ -135,7 +135,7 @@ const Gallery = ({
     }
 
     return <div className="min-h-screen text-center" >
-      <h1 className="text-[#EBFF6E] text-[5rem] font-black leading-none [text-shadow:10px_10px_0px_#0D7C85]">
+      <h1 className="text-[#EBFF6E] text-[2rem] font-black leading-none ">
           Portal Failure: {error?.message}
         </h1>
       
@@ -179,7 +179,7 @@ const Gallery = ({
         {/* Sentinel */}
         {/* each time this is crossed it triggers a new page */}
         <div ref={sentinelRef} className="">
-          {loading && <Loading/>}
+          {loading && <CharacterCardSkeleton index={10} />}
         </div>
       </div>
     </section>
