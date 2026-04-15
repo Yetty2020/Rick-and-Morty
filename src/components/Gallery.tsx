@@ -179,7 +179,23 @@ const Gallery = ({
         {/* Sentinel */}
         {/* each time this is crossed it triggers a new page */}
         <div ref={sentinelRef} className="">
-          {loading && <CharacterCardSkeleton index={10} />}
+          {loading && <div className="mt-4 flex flex-col items-center gap-3">
+        {/* The Animating Spin */}
+        <div
+          className="w-10 h-10 rounded-full border-2 border-[#00ff4122] border-t-[#00ff4166] animate-spin"
+          style={{ animationDuration: "1.2s" }}
+        >
+          <div
+            className="w-5 h-5 rounded-full border-2 border-[#00ff4115] border-b-[#00ff4144] animate-spin mt-1 mx-auto"
+            style={{ animationDuration: "0.8s", animationDirection: "reverse" }}
+          />
+        </div>
+
+        {/* The Pulse Text */}
+        <p className="text-[12px] text-white font-mono uppercase tracking-[5px] animate-pulse">
+          portal connection...
+        </p>
+      </div>}
         </div>
       </div>
     </section>
