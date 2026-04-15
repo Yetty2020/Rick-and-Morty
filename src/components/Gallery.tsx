@@ -2,7 +2,7 @@ import CharacterCard from "./CharacterCard";
 import { useCharacters } from "../useCharacters";
 import { useState, useRef, useEffect } from "react";
 import Loading from "./Loading";
-import CharacterError from "./characterError";
+import CharacterError from "./CharacterError";
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -50,7 +50,7 @@ const Gallery = ({
       opacity: 1,
      
      
-      duration: 0.5,
+      duration: 0.7,
       ease: "back.out(1.7)",
       // The secret sauce: small delay for the first cards
       // This makes them pop one-by-one on page load

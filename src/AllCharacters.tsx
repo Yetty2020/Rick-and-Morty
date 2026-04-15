@@ -1,6 +1,7 @@
 import { useQuery } from "@apollo/client/react"
 import { GET_CHARACTERS } from "./queries"
 import { type CharactersResponse, type CharactersVars } from "./types"
+import Loading from "./components/Loading";
 
 const AllCharacters = () => {
   const { loading, error, data, fetchMore } = useQuery<CharactersResponse, CharactersVars>(GET_CHARACTERS, {
@@ -8,7 +9,7 @@ const AllCharacters = () => {
     notifyOnNetworkStatusChange: true,
   });
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div><Loading/></div>;
   if (error) return <div>Error: {error.message}</div>;
   console.log(data)
   
