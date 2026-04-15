@@ -152,7 +152,7 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section className="px-6   " >
+    <section className="lg:px-6 px-2   " >
 
      <div className=" ">
       <ComicSticker text="Kapow!" 
@@ -168,7 +168,7 @@ const Gallery = ({
   />
     
   </div>
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 lg:px-20 bg-[#0F3A40]  " ref={container}>
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-2 md:px-20 bg-[#0F3A40]  " ref={container}>
         {data?.characters.results.map((character, index) => {
           return (
 
