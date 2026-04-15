@@ -152,13 +152,13 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section className="lg:px-6 px-2   " >
+    <section className="lg:px-6 md:px-6 px-2   " >
 
      <div className=" ">
       <ComicSticker text="Kapow!" 
     position="top-0 -left-10 -rotate-12" 
     color="bg-cyan-400"/>
-    <h1 className=" text-xl md:text-2xl lg:text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black] mb-2 md:mb-4">
+    <h1 className="  text-2xl md:text-4xl lg:text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black] mb-2 md:mb-4">
   Character Portal
 </h1>
 <ComicSticker 
@@ -168,7 +168,7 @@ const Gallery = ({
   />
     
   </div>
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-2 md:px-20 bg-[#0F3A40]  " ref={container}>
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-2 md:px-10 lg:px-20 bg-[#0F3A40]  " ref={container}>
         {data?.characters.results.map((character, index) => {
           return (
 

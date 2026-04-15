@@ -2,7 +2,7 @@ const SkeletonBlock = ({ className }: { className?: string }) => (
   <div
     className={`bg-[#0f2a0f] rounded-md relative overflow-hidden ${className}`}
   >
-    <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.8s_infinite] bg-gradient-to-r from-transparent via-[#00ff4112] to-transparent" />
+    <div className="absolute inset-0 -translate-x-full animate-[shimmer_1.8s_infinite] bg-linear-to-r from-transparent via-[#00ff4112] to-transparent" />
   </div>
 );
 

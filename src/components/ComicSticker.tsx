@@ -1,6 +1,6 @@
 export const ComicSticker = ({ text, position, color = "bg-yellow-400" } : { text: string; position: string; color?: string }) => {
   return (
-    <div className={`absolute ${position} z-0 transform hover:scale-110 fixed transition-transform cursor-default select-none hidden md:block`}>
+    <div className={`absolute ${position} z-0 transform hover:scale-110 fixed transition-transform cursor-default select-none hidden lg:block`}>
       {/* The "Explosion" background layer (Black border) */}
       <div className="relative">
         <div 
