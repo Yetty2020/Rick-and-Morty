@@ -8,22 +8,22 @@ import { ApolloClient, InMemoryCache, HttpLink, ApolloLink } from '@apollo/clien
 //   ServerParseError,
 //   UnconventionalError,
 // } from "@apollo/client/errors";
-import { onError } from '@apollo/client/link/error';
-const errorLink = onError(({ graphQLErrors, networkError }) => {
-  // Handle GraphQL-specific errors (e.g., validation, resolver errors)
-  if (graphQLErrors) {
-    graphQLErrors.forEach(({ message, locations, path }) => {
-      console.error(
-        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-      );
-    });
-  }
+//import { onError } from '@apollo/client/link/error';
+// const errorLink = onError(({ graphQLErrors, networkError }) => {
+//   // Handle GraphQL-specific errors (e.g., validation, resolver errors)
+//   if (graphQLErrors) {
+//     graphQLErrors.forEach(({ message, locations, path }) => {
+//       console.error(
+//         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
+//       );
+//     });
+//   }
 
   // Handle network-level errors (e.g., connection issues)
-  if (networkError) {
-    console.error(`[Network error]: ${networkError}`);
-  }
-});
+//   if (networkError) {
+//     console.error(`[Network error]: ${networkError}`);
+//   }
+// });
 
 
 
@@ -52,7 +52,7 @@ const httpLink = new HttpLink({
     uri: import.meta.env.VITE_RICK_AND_MORTY_API_URL,
 });
 
-const link = ApolloLink.from([errorLink,httpLink])
+const link = ApolloLink.from([httpLink])
 
 const client = new ApolloClient({
     link,
