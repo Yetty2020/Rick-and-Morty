@@ -12,7 +12,6 @@ gsap.registerPlugin(useGSAP);
 gsap.registerPlugin(ScrollTrigger) 
 
 
-// const SUGGESTIONS = ["Rick", "Morty", "Summer", "Beth", "Jerry"];
 
 
 
@@ -34,10 +33,9 @@ const Gallery = ({
   const container = useRef<HTMLDivElement>(null)
 
   useGSAP(() =>{ 
-    // if (loading || !data?.results) return;
+    
 
-    const cards = gsap.utils.toArray(".gallery-item")// to get all items in the list
-    // const randomRot = Math.floor(Math.random() * 3) - 1;
+    const cards = gsap.utils.toArray(".gallery-item")// 
    
 
     //to give each items item its logis 
@@ -52,12 +50,11 @@ const Gallery = ({
      
       duration: 0.7,
       ease: "back.out(1.7)",
-      // The secret sauce: small delay for the first cards
-      // This makes them pop one-by-one on page load
+      
       delay: index * 0.15, 
       scrollTrigger: {
         trigger: element,
-        start: "top 90%", // Trigger earlier so they pop as they enter
+        start: "top 90%", 
        
         toggleActions: "play none none reverse",
         
@@ -99,7 +96,7 @@ const Gallery = ({
       observer.observe(sentinelRef.current);
     }
 
-    // Always clean up to prevent memory leaks!
+    
     return () => observer.disconnect();
   }, [data?.characters.info.next, loading, fetchMore]);
 
@@ -126,10 +123,7 @@ const Gallery = ({
 
     if (NotFound) {
       return (
-        // <div>
-        //   <h3>No charater found for {searchTerm}</h3>
-        //   <p>Maybe they're in another dimension</p>
-        // </div>
+       
         <CharacterError onSearchUpdate={() => onSearchUpdate("")} onReset={onReset}/>
       );
     }
@@ -147,14 +141,7 @@ const Gallery = ({
   if (!characters || characters?.length === 0) {
     return (
       <div>
-        {/* <p>Try searching for one of these instead:</p>
-        <div>
-          {SUGGESTIONS.map((name) => (
-            <button key={name} onClick={() => onSearchUpdate(name)}>
-              {name}
-            </button>
-          ))}
-        </div> */}
+        
         
         <CharacterError onSearchUpdate={() => onSearchUpdate("")} onReset={onReset}/>
       </div>
@@ -164,15 +151,15 @@ const Gallery = ({
   console.log(error);
 
   return (
-    <section className="px-6" >
+    <section className="px-6 comic-dots paper-texture " >
 
-     <div className="flex-1  p-6 border-2 border-b-[#EBFF6E] rounded-lg shadow-[4px_4px_0px_0px_rgba(0,0,0,1)]">
-    <h1 className="text-[#EBFF6E] font-black text-3xl md:text-5xl uppercase italic tracking-tighter">
-      Variant Registry
-    </h1>
+     <div className=" ">
+    <h1 className="text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black]">
+  Character Portal
+</h1>
     
   </div>
-  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 lg:px-20 bg-[#0F3A40] " ref={container}>
+  <div className="grid lg:grid-cols-4 grid-flow-dense auto-rows-[minmax(150px,auto)] w-full gap-6 py-6 px-10 lg:px-20 bg-[#0F3A40]  " ref={container}>
         {data?.characters.results.map((character, index) => {
           return (
 

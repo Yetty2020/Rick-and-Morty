@@ -8,3 +8,32 @@
     --font-bangers: "Bangers", system-ui;
     --font-grotesk: "Space Grotesk", sans-serif;
 }
+
+
+.comic-dots {
+  /* Use your background color here */
+  background-color: #0F3A40; 
+  
+  /* The dots: semi-transparent black gives a "pressed ink" look */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.3) 1.5px, transparent 0);
+  
+  /* Size of the grid */
+  background-size: 24px 24px; 
+  background-attachment: fixed;
+}
+
+.paper-texture {
+  position: relative;
+}
+
+.paper-texture::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.05;
+  pointer-events: none;
+  background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+}
