@@ -83,7 +83,7 @@ const layoutKey = `${colMatch?.[0] ?? "col-span-1"} ${rowMatch?.[0] ?? "row-span
   return (
     <Link
       to={`/character/${id}`}
-      className={`border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md hover:scale-105 
+      className={`comic-card-split citadel-card border-4 flex flex-col items-center  px-2 py-4  rounded-sm shadow-md hover:scale-105 
   hover:shadow-[0_0_25px_rgba(151,206,76,0.4)]
   cursor-pointer  ${spanClass} relative  ${config.background} ${className}`}
     >
