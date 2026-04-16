@@ -158,7 +158,7 @@ const Gallery = ({
       <ComicSticker text="Kapow!" 
     position="top-0 -left-10 -rotate-12" 
     color="bg-cyan-400"/>
-    <header className="relative w-full py-20 flex flex-col items-center">
+    <header className="relative w-full py-10 lg:py-20 flex flex-col items-center">
   
 
   <div className="smear-wrapper">
@@ -166,7 +166,7 @@ const Gallery = ({
     <div className="paint-stroke"></div>
 
     {/* The Title sits on top */}
-    <h1 className="relative z-10 text-3xl md:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
+    <h1 className="relative z-10 text-5xl md:text-6xl lg:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
       Character Portal
     </h1>
   </div>
@@ -212,12 +212,7 @@ const Gallery = ({
         </div>
       </div>
 
-      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
-  <filter id="paint-smear">
-    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
-    <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" />
-  </filter>
-</svg>
+      
     </section>
   );
 };
