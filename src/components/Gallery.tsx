@@ -52,7 +52,7 @@ const Gallery = ({
       duration: 0.7,
       ease: "back.out(1.7)",
       
-      delay: index * 0.15, 
+      delay: index * 0.05, 
       scrollTrigger: {
         trigger: element,
         start: "top 90%", 
@@ -158,9 +158,19 @@ const Gallery = ({
       <ComicSticker text="Kapow!" 
     position="top-0 -left-10 -rotate-12" 
     color="bg-cyan-400"/>
-    <h1 className="  text-2xl md:text-4xl lg:text-6xl font-black italic uppercase tracking-tighter text-[#EBFF6E] drop-shadow-[4px_4px_0px_black] mb-2 md:mb-4">
-  Character Portal
-</h1>
+    <header className="relative w-full py-20 flex flex-col items-center">
+  
+
+  <div className="smear-wrapper">
+    {/* This is the butter spread */}
+    <div className="paint-stroke"></div>
+
+    {/* The Title sits on top */}
+    <h1 className="relative z-10 text-3xl md:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
+      Character Portal
+    </h1>
+  </div>
+</header>
 <ComicSticker 
     text="Bam!" 
     position="top-2 -right-7 rotate-12" 
@@ -201,6 +211,13 @@ const Gallery = ({
       </div>}
         </div>
       </div>
+
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+  <filter id="paint-smear">
+    <feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="3" result="noise" />
+    <feDisplacementMap in="SourceGraphic" in2="noise" scale="15" />
+  </filter>
+</svg>
     </section>
   );
 };

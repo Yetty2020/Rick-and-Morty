@@ -42,9 +42,9 @@ function Search({onSearchChange, currentValue}: {onSearchChange: (val: string) =
 
    
   return (
-    <div className="py-4 mb-2 px-3" ref={container}>
-        <div className=" text-white flex items-center justify-center w-full">
-            <div className="bg-[#407772] p-2 rounded-md flex items-center justify-between w-full max-w-xl search-element">
+    <div className="py-4 mb-2 px-3  filter-[url(#ink-bleed)] " ref={container} >
+        <div className=" text-white flex items-center justify-center w-full ">
+            <div className="bg-black p-2 rounded-md flex items-center justify-between w-full max-w-xl search-element border-4 border-[#EBFF6E]">
                 <input type="text" placeholder="Find a character..." value={currentValue} onChange={(event) =>{setSearchItem(event.target.value) 
             
 
