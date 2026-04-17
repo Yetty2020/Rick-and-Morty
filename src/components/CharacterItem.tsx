@@ -140,7 +140,7 @@ gsap.from(".character-portrait", {
         const response: AxiosResponse<CharacterItemProps> = await axios.get(
           `https://rickandmortyapi.com/api/character/${id}`,
         );
-        console.log(response.data);
+        // console.log(response.data);
         setCharacter(response.data);
 
         //to get episode, fetch first five episodes

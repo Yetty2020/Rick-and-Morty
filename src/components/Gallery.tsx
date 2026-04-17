@@ -148,8 +148,8 @@ const Gallery = ({
       </div>
     );
   }
-  console.log(data);
-  console.log(error);
+  // console.log(data);
+  // console.log(error);
 
   return (
     <section className="lg:px-6 md:px-6 px-2   " >

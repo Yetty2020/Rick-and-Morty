@@ -11,7 +11,7 @@ const AllCharacters = () => {
 
   if (loading) return <div><Loading/></div>;
   if (error) return <div>Error: {error.message}</div>;
-  console.log(data)
+  // console.log(data)
   
 
   return { data, loading, error, fetchMore };

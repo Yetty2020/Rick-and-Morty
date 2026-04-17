@@ -37,7 +37,7 @@ function Search({onSearchChange, currentValue}: {onSearchChange: (val: string) =
 
       if (text !== currentValue) {
         onSearchChange(text);
-        console.log("Search dispatched:", text);
+        // console.log("Search dispatched:", text);
       }
     }, 500);
       // Only trigger if the value is actually different to avoid loops
