@@ -166,7 +166,7 @@ const Gallery = ({
     <div className="paint-stroke"></div>
 
     {/* The Title sits on top */}
-    <h1 className="relative z-10 text-5xl md:text-6xl lg:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
+    <h1 className="relative z-10 text-3xl md:text-6xl lg:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
       Character Portal
     </h1>
   </div>
