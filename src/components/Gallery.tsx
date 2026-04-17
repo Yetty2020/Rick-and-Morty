@@ -158,18 +158,14 @@ const Gallery = ({
       <ComicSticker text="Kapow!" 
     position="top-0 -left-10 -rotate-12" 
     color="bg-cyan-400"/>
-    <header className="relative w-full py-10 lg:py-20 flex flex-col items-center">
+    <header className="relative w-full py-5 lg:py-20 flex flex-col items-center filter-[url(#ink-bleed)]">
   
 
-  <div className="smear-wrapper">
-    {/* This is the butter spread */}
-    <div className="paint-stroke"></div>
-
-    {/* The Title sits on top */}
-    <h1 className="relative z-10 text-3xl md:text-6xl lg:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
+ 
+    <h1 className=" text-3xl md:text-6xl lg:text-9xl font-black italic uppercase text-black tracking-tighter mix-blend-multiply">
       Character Portal
     </h1>
-  </div>
+ 
 </header>
 <ComicSticker 
     text="Bam!" 

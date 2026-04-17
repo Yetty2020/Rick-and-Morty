@@ -108,14 +108,14 @@ gsap.from(".character-portrait", {
   const statusMap = {
     Alive: {
       icon: (
-        <FaHeartbeat className="text-[#EBFF6E] animate-pulse text-3xl lg:text-6xl" />
+        <FaHeartbeat className="text-[#EBFF6E] animate-bounce text-3xl lg:text-6xl" />
       ),
       textColor: "text-[#EBFF6E]",
       bgColor: "bg-green-900/30",
       label: "Biological Signal: Active",
     },
     Dead: {
-      icon: <FaSkullCrossbones className="text-red-500 text-3xl lg:text-6xl" />,
+      icon: <FaSkullCrossbones className="text-red-500 text-3xl lg:text-6xl animate-pulse" />,
       textColor: "text-red-500",
       bgColor: "bg-red-900/30",
       label: "Biological Signal: Terminated",
@@ -196,9 +196,9 @@ gsap.from(".character-portrait", {
           </div>
           <div className="p-4 rounded-lg  font-mono text-xs lg:flex items-center  justify-between w-full bg-[#EBFF6E] border-2 border-black  lg:px-6 lg:py-2 font-bold shadow-[4px_4px_0px_0px_#000] hidden bento-box">
             <img src={astro} alt="astro" className="w-10  animate-pulse" />
-            <img src={gun} alt="gun" className="w-10  " />
-            <img src={neptune} alt="neptune" className="w-10  " />
-            <img src={space} alt="space" className="w-10  " />
+            <img src={gun} alt="gun" className="w-10 animate-pulse " />
+            <img src={neptune} alt="neptune" className="w-10 animate-pulse " />
+            <img src={space} alt="space" className="w-10 animate-pulse " />
           </div>
         </div>
 
@@ -294,9 +294,9 @@ gsap.from(".character-portrait", {
 
           <div className="p-4 rounded-lg  font-mono text-xs flex items-center  justify-between w-full bg-[#EBFF6E] border-2 border-black  lg:px-6 lg:py-2 font-bold shadow-[4px_4px_0px_0px_#000] lg:hidden bento-box ">
             <img src={astro} alt="astro" className="w-10  animate-pulse" />
-            <img src={gun} alt="gun" className="w-10  " />
-            <img src={neptune} alt="neptune" className="w-10  " />
-            <img src={space} alt="space" className="w-10  " />
+            <img src={gun} alt="gun" className="w-10 animate-pulse " />
+            <img src={neptune} alt="neptune" className="w-10 animate-pulse  " />
+            <img src={space} alt="space" className="w-10  animate-pulse " />
           </div>
         </div>
       </div>
