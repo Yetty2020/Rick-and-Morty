@@ -1,73 +1,32 @@
-# React + TypeScript + Vite
+# 🌀 Rick & Morty Character Portal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A high-performance, immersive character database built to bridge the gap between gritty "comic-book" aesthetics and modern web performance. 
 
-Currently, two official plugins are available:
+[(https://rick-and-morty-blush-mu.vercel.app/)]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🚀 The Mission
+The goal was to build a portal that feels like a salvaged piece of Citadel technology. I focused on moving away from "clean" minimalist UI to experiment with heavy SVG filters, displacement textures, and complex GSAP orchestrations—all while maintaining a 60fps experience.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ Tech Stack
+* Frontend: React 18, TypeScript, Tailwind CSS
+* Animations: GSAP (GreenSock)
+* Data Fetching: GraphQL (Apollo/URQL)
 
-## Expanding the ESLint configuration
+## ✨ Key Features
+* **Intelligent Search:** A custom debounced search terminal that handles heavy UI filtering without input lag.
+* **Bento Grid Layout:** A responsive, non-traditional grid that adapts character vitals into an organized "desk file" aesthetic.
+* **Chromatic Aberration:** CSS-driven "split-panel" hover effects mimicking vintage comic book misprints.
+* **Interactive Scanners:** Dynamic scan-line animations and targeting UI for every character card.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 Technical Challenges & Solutions
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### The "Laggy Input" Problem
+Challenge: Applying multiple SVG filters (turbulence and displacement) to dozens of cards simultaneously caused significant frame drops during real-time searching.
+Solution: I implemented a custom `useEffect` debounce pattern. By delaying the state sync by 500ms, I reduced the re-render load significantly, allowing the browser to prioritize the input responsiveness before recalculating the complex filter layouts.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Efficient Data Querying
+Challenge: The character list contains deep nested data, much of which wasn't needed for the initial portal view.
+Solution: Used GraphQL to request only the necessary fields (name, status, origin, image), reducing the payload size and speeding up the initial load time.
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
